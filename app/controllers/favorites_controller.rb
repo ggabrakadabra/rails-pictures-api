@@ -1,9 +1,10 @@
+# frozen_string_literal: true
 class FavoritesController < OpenReadController
   before_action :set_favorite, only: [:update, :destroy]
 
   # GET /favorites
   def index
-    @favorite = current_user.favorites.order(created_at: :asc)
+    @favorites = current_user.favorites.order(created_at: :asc)
 
     render json: @favorites
   end
@@ -19,7 +20,7 @@ class FavoritesController < OpenReadController
     @favorite = current_user.favorites.build(favorite_params)
 
     if @favorite.save
-      render json: @favorite, status: :created, location: @favorite
+      render json: @favorite, status: :created
     else
       render json: @favorite.errors, status: :unprocessable_entity
     end
