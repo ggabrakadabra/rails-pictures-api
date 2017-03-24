@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :update, :destroy]
 
