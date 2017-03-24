@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class PicturesController < ApplicationController
+class PicturesController < OpenReadController
   before_action :set_picture, only: [:show, :update, :destroy]
 
   # GET /pictures

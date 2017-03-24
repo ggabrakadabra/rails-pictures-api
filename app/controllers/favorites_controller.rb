@@ -1,5 +1,5 @@
-class FavoritesController < ApplicationController
-  before_action :set_favorite, only: [:show, :update, :destroy]
+class FavoritesController < OpenReadController
+  before_action :set_favorite, only: [:update, :destroy]
 
   # GET /favorites
   def index
@@ -15,7 +15,7 @@ class FavoritesController < ApplicationController
 
   # POST /favorites
   def create
-    @favorite = Favorite.new(favorite_params)
+    @favorite = current_user.favorites.build(favorite_params)
 
     if @favorite.save
       render json: @favorite, status: :created, location: @favorite
