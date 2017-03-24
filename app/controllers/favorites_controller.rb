@@ -3,13 +3,14 @@ class FavoritesController < OpenReadController
 
   # GET /favorites
   def index
-    @favorites = Favorite.all
+    @favorite = current_user.favorites.order(created_at: :asc)
 
     render json: @favorites
   end
 
   # GET /favorites/1
   def show
+    @favorite = Favorite.find(params[:id])
     render json: @favorite
   end
 
