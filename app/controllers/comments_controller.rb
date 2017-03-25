@@ -1,5 +1,6 @@
-class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :update, :destroy]
+# frozen_string_literal: true
+class CommentsController < OpenReadController
+  before_action :set_comment, only: [:update, :destroy]
 
   # GET /comments
   def index
@@ -15,10 +16,10 @@ class CommentsController < ApplicationController
 
   # POST /comments
   def create
-    @comment = Comment.new(comment_params)
+    @comment = current_user.comments.build(comment_params)
 
     if @comment.save
-      render json: @comment, status: :created, location: @comment
+      render json: @comment, status: :created
     else
       render json: @comment.errors, status: :unprocessable_entity
     end
