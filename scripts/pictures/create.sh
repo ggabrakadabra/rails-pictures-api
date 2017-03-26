@@ -1,6 +1,6 @@
 API="${API_ORIGIN:-http://localhost:4741}"
 URL_PATH="/pictures"
-TOKEN="BAhJIiViY2E3OThhYjczMDk2ODNiM2ZiMWRlZGNhNjcxYjQyNwY6BkVG--28c4215497d4c3103dca2c2fb034051b681f16d7"
+TOKEN="BAhJIiUyODI4NWVlNmMxMmY3ZWM1YjlkMTdhOGFlMjA4M2NjZgY6BkVG--2ed74d61dabe52140aecec2107c1e83b83ba3b41"
 curl "${API}${URL_PATH}" \
  --include \
  --request POST \
