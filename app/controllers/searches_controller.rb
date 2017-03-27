@@ -50,6 +50,16 @@ class SearchesController < OpenReadController
     render json: json_string
   end
 
+  def apod_search
+    query = params[:search][:query]
+    api_key = Rails.application.secrets.nasa_api_key
+    url = "https://api.nasa.gov/planetary/apod?date=#{query}&api_key=#{api_key}"
+    response = open(url)
+    data_string = response.read
+    json_string = JSON.parse(data_string)
+    render json: json_string
+  end
+
   # PATCH/PUT /examples/1
   # PATCH/PUT /examples/1.json
   def update

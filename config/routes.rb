@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   post '/search/sounds' => 'searches#sounds_search'
   post '/search/patents' => 'searches#patents_search'
   post '/search/mars' => 'searches#mars_search'
+  post '/search/apod/today' => 'searches#apod_today'
+  post '/search/apod' => 'searches#apod_search'
 end
