@@ -1,13 +1,14 @@
 # frozen_string_literal: true
-class ExamplesController < OpenReadController
+require 'open-uri'
+require 'json'
+
+class SearchesController < OpenReadController
   before_action :set_example, only: [:update, :destroy]
 
   # GET /examples
   # GET /examples.json
   def index
-    @examples = Example.all
 
-    render json: @examples
   end
 
   # GET /examples/1
@@ -18,14 +19,16 @@ class ExamplesController < OpenReadController
 
   # POST /examples
   # POST /examples.json
-  def create
-    @example = current_user.examples.build(example_params)
+  # using create route for api w/o generating new resource
+  def sounds_search
+    query = params[:search][:query]
+    api_key = Rails.application.secrets.nasa_api_key
+    url = "https://api.nasa.gov/planetary/sounds?q=#{query}&api_key=#{api_key}"
+    response = open(url)
+    data_string = response.read
+    json_string = JSON.parse(data_string)
+    render json: json_string
 
-    if @example.save
-      render json: @example, status: :created
-    else
-      render json: @example.errors, status: :unprocessable_entity
-    end
   end
 
   # PATCH/PUT /examples/1
@@ -51,7 +54,7 @@ class ExamplesController < OpenReadController
   end
 
   def example_params
-    params.require(:example).permit(:text)
+    params.require(:query).permit(:query)
   end
 
   private :set_example, :example_params
