@@ -30,6 +30,16 @@ class SearchesController < OpenReadController
     render json: json_string
   end
 
+  def mars_search
+    query = params[:search][:query]
+    api_key = Rails.application.secrets.nasa_api_key
+    url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=#{query}&api_key=#{api_key}"
+    response = open(url)
+    data_string = response.read
+    json_string = JSON.parse(data_string)
+    render json: json_string
+  end
+
   def patents_search
     query = params[:search][:query]
     api_key = Rails.application.secrets.nasa_api_key
