@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
 
   post '/search/sounds' => 'searches#sounds_search'
+  post '/search/patents' => 'searches#patents_search'
 end
