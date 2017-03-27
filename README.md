@@ -4,6 +4,10 @@
 
 **Front End Repo:** <https://github.com/ggwilliams/pictures-app-client>
 
+## ERD
+1st ERD:
+![ERD1](ERD.jpg "1st ERD")
+
 ## About
 To create an app that would view the NASA Astronomy Picture of the Day website and save the users favorite pictures and also allow users to comment on those pictures, I needed to have 3 tables. A table for pictures that would save the pictures, a table for favorites, and a table for comments.
 
