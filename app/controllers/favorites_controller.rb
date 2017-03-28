@@ -19,7 +19,10 @@ class FavoritesController < OpenReadController
   def create
     @favorite = current_user.favorites.build(favorite_params)
 
-    if @favorite.save
+    if Favorite.exists?(user_id: current_user.id,
+                        picture_id: favorite_params[:picture_id])
+      head :conflict
+    elsif @favorite.save
       render json: @favorite, status: :created
     else
       render json: @favorite.errors, status: :unprocessable_entity

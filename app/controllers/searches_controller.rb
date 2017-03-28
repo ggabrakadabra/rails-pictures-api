@@ -23,7 +23,7 @@ class SearchesController < OpenReadController
   def sounds_search
     query = params[:search][:query]
     api_key = Rails.application.secrets.nasa_api_key
-    url = "https://api.nasa.gov/planetary/sounds?q=#{query}&api_key=#{api_key}"
+    url = "https://api.nasa.gov/planetary/sounds?q=#{query}&limit=100&api_key=#{api_key}"
     response = open(url)
     data_string = response.read
     json_string = JSON.parse(data_string)

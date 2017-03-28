@@ -16,9 +16,12 @@ class PicturesController < OpenReadController
 
   # POST /pictures
   def create
-    @picture = Picture.new(picture_params)
+    @picture = current_user.pictures.build(picture_params)
 
-    if @picture.save
+    @existing_pictures = Picture.where(title: @picture.title)
+    if @existing_pictures.length > 0
+      render json: @existing_pictures[0], status: :created
+    elsif @picture.save
       render json: @picture, status: :created
     else
       render json: @picture.errors, status: :unprocessable_entity
