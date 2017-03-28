@@ -4,7 +4,7 @@ class CommentsController < OpenReadController
 
   # GET /comments
   def index
-    @comments = Comment.all.order(created_at: :asc)
+    @comments = Comment.all.order(created_at: :desc)
 
     render json: @comments
   end
