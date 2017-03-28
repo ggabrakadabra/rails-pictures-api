@@ -47,7 +47,7 @@ class PicturesController < OpenReadController
 
   # Only allow a trusted parameter "white list" through.
   def picture_params
-    params.require(:picture).permit(:title)
+    params.require(:picture).permit(:title, :date, :explanation, :hdurl)
   end
   private :picture_params
 end
