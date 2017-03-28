@@ -54,7 +54,67 @@ echo
 
 After favorites, I created the users comments on pictures. This would serve as a join table between users and pictures since users have many comments and pictures have many users.
 
-## User Stories relevant to this repo
+## Adding the Third Party Api
+I was having issues with the NASA third party api in the front end. But having a method that used the NASA api worked better. I had to create a method that would get the data from APOD for todays date and for any date the user searched for.
+
+```
+def apod_search
+  query = params[:search][:query]
+  api_key = Rails.application.secrets.nasa_api_key
+  url = "https://api.nasa.gov/planetary/apod?date=#{query}&api_key=#{api_key}"
+  response = open(url)
+  data_string = response.read
+  json_string = JSON.parse(data_string)
+  render json: json_string
+end
+
+def apod_today
+  api_key = Rails.application.secrets.nasa_api_key
+  url = "https://api.nasa.gov/planetary/apod?api_key=#{api_key}"
+  response = open(url)
+  data_string = response.read
+  json_string = JSON.parse(data_string)
+  render json: json_string
+end
+```
+
+These are both methods in the searches controller. I also had to make sure they had separate routes.
+```
+post '/search/apod/today' => 'searches#apod_today'
+post '/search/apod' => 'searches#apod_search'
+```
+To test that the api calls were working properly, I ran this script.
+
+```
+#!/bin/bash
+
+API="${API_ORIGIN:-http://localhost:4741}"
+URL_PATH="/search/sounds"
+TOKEN="BAhJIiUyYTFlMTkwZmQ0YTk4NDg2NTZiZjA5ODBiYWY2MDAyMAY6BkVG--e19895e69907eaef9b5a4ef0fbc6b15cb52f75d6"
+curl "${API}${URL_PATH}" \
+  --include \
+  --request POST \
+  --header "Content-Type: application/json" \
+   --header "Authorization: Token token=$TOKEN" \
+  --data '{
+    "search": {
+      "query": "'"${QUERY}"'"
+    }
+  }'
+
+echo
+```
+
+### NASA API Routes
+| Verb   | URI Pattern            | Controller#Action |
+|--------|------------------------|-------------------|
+| POST   | `/search/sounds`             | `searches#sounds_search`    |
+| POST   | `/search/patents`             | `searches#patents_search`    |
+| POST  | `/search/mars` | `searches#mars_search`  |
+| POST | `/search/apod/today`        | `searches#apod_today`   |
+| POST | `/search/apod`        | `searches#apod_search`   |
+
+
 
 ### Authentication
 
