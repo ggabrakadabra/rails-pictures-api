@@ -33,7 +33,7 @@ curl "${API}${URL_PATH}" \
 ```
 Once the pictures table and scripts worked correctly, I added the favorites table. This table authenticates the user since only the user should be able to see and create their own favorites.
 
-This is the update script for creating a favorite.
+This is the script for creating a favorite.
 ```
 #!/bin/bash
 
@@ -54,8 +54,42 @@ echo
 
 After favorites, I created the users comments on pictures. This would serve as a join table between users and pictures since users have many comments and pictures have many users.
 
+To test that users could create comments, I ran this script.
+```
+API="${API_ORIGIN:-http://localhost:4741}"
+URL_PATH="/comments"
+TOKEN="BAhJIiU3ODk2ZDVhMDIyMjliNWY4NzAxMzY3NzgwODJhY2Y2YgY6BkVG--412738c66de6b950da70af85a447b34cafcb6852"
+curl "${API}${URL_PATH}" \
+ --include \
+ --request POST \
+ --header "Content-Type: application/json" \
+ --header "Authorization: Token token=$TOKEN" \
+ --data '{
+   "comment": {
+     "picture_id": "'"${PICTURE_ID}"'",
+     "note": "'"${NOTE}"'"
+   }
+ }'
+
+ echo
+```
+
 ## Adding the Third Party Api
+
 I was having issues with the NASA third party api in the front end. But having a method that used the NASA api worked better. I had to create a method that would get the data from APOD for todays date and for any date the user searched for.
+
+### NASA API Routes
+| Verb   | URI Pattern            | Controller#Action |
+|--------|------------------------|-------------------|
+| POST   | `/search/sounds`             | `searches#sounds_search`    |
+| POST   | `/search/patents`             | `searches#patents_search`    |
+| POST  | `/search/mars` | `searches#mars_search`  |
+| POST | `/search/apod/today`        | `searches#apod_today`   |
+| POST | `/search/apod`        | `searches#apod_search`   |
+| POST | `/search/neo/today`        | `searches#neo_today`   |
+| POST | `/search/stats`        | `searches#neo_stats`   |
+
+I wanted to make use of as many of the NASA APIs that I could.
 
 ```
 def apod_search
@@ -104,18 +138,6 @@ curl "${API}${URL_PATH}" \
 
 echo
 ```
-
-### NASA API Routes
-| Verb   | URI Pattern            | Controller#Action |
-|--------|------------------------|-------------------|
-| POST   | `/search/sounds`             | `searches#sounds_search`    |
-| POST   | `/search/patents`             | `searches#patents_search`    |
-| POST  | `/search/mars` | `searches#mars_search`  |
-| POST | `/search/apod/today`        | `searches#apod_today`   |
-| POST | `/search/apod`        | `searches#apod_search`   |
-| POST | `/search/neo/today`        | `searches#neo_today`   |
-| POST | `/search/stats`        | `searches#neo_stats`   |
-
 
 
 ### Authentication
