@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   post '/search/mars' => 'searches#mars_search'
   post '/search/apod/today' => 'searches#apod_today'
   post '/search/apod' => 'searches#apod_search'
+  post '/search/neo/today' => 'searches#neo_today'
+  post '/search/stats' => 'searches#neo_stats'
 end

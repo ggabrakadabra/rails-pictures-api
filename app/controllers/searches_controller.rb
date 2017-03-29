@@ -5,20 +5,14 @@ require 'json'
 class SearchesController < OpenReadController
   before_action :set_example, only: [:update, :destroy]
 
-  # GET /examples
-  # GET /examples.json
   def index
 
   end
 
-  # GET /examples/1
-  # GET /examples/1.json
   def show
     render json: Example.find(params[:id])
   end
 
-  # POST /examples
-  # POST /examples.json
   # using create route for api w/o generating new resource
   def sounds_search
     query = params[:search][:query]
@@ -68,8 +62,25 @@ class SearchesController < OpenReadController
     json_string = JSON.parse(data_string)
     render json: json_string
   end
-  # PATCH/PUT /examples/1
-  # PATCH/PUT /examples/1.json
+
+  def neo_today
+    api_key = Rails.application.secrets.nasa_api_key
+    url = "https://api.nasa.gov/neo/rest/v1/feed/today?detailed=true&api_key=#{api_key}"
+    response = open(url)
+    data_string = response.read
+    json_string = JSON.parse(data_string)
+    render json: json_string
+  end
+
+  def neo_stats
+    api_key = Rails.application.secrets.nasa_api_key
+    url = "https://api.nasa.gov/neo/rest/v1/stats?api_key=#{api_key}"
+    response = open(url)
+    data_string = response.read
+    json_string = JSON.parse(data_string)
+    render json: json_string
+  end
+
   def update
     if @example.update(example_params)
       head :no_content
@@ -78,8 +89,6 @@ class SearchesController < OpenReadController
     end
   end
 
-  # DELETE /examples/1
-  # DELETE /examples/1.json
   def destroy
     @example.destroy
 
