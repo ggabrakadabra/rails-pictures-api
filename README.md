@@ -113,6 +113,8 @@ echo
 | POST  | `/search/mars` | `searches#mars_search`  |
 | POST | `/search/apod/today`        | `searches#apod_today`   |
 | POST | `/search/apod`        | `searches#apod_search`   |
+| POST | `/search/neo/today`        | `searches#neo_today`   |
+| POST | `/search/stats`        | `searches#neo_stats`   |
 
 
 
