@@ -4,9 +4,21 @@
 
 **Front End Repo:** <https://github.com/ggwilliams/pictures-app-client>
 
+**Deployed:** <https://salty-ravine-27099.herokuapp.com/>
+
 ## ERD
 1st ERD:
 ![ERD1](ERD.jpg "1st ERD")
+
+## Technologies Used
+* JavaScript
+* jQuery
+* Handlebars
+* 3rd Party API (NASA)
+* Ruby on Rails
+
+## Overview
+This Ruby on Rails backend has 3 tables, comments, pictures and favorites. For each of these tables there are corresponding controllers, models, serializers, and scripts to test them. I also have a searches controller that handles all of my api calls. And the routes file displays all of the current routes.
 
 ## About
 To create an app that would view the NASA Astronomy Picture of the Day website and save the users favorite pictures and also allow users to comment on those pictures, I needed to have 3 tables. A table for pictures that would save the pictures, a table for favorites, and a table for comments.
@@ -14,6 +26,7 @@ To create an app that would view the NASA Astronomy Picture of the Day website a
 To begin, I created the table for pictures. I needed scripts to test this feature also.
 
 This is my create pictures script. This script doesn't need a user token because only favorites and comments belong to the user.
+
 ```
 API="${API_ORIGIN:-http://localhost:4741}"
 URL_PATH="/pictures"
@@ -73,6 +86,40 @@ curl "${API}${URL_PATH}" \
 
  echo
 ```
+
+To make sure that the pictures users were adding were not duplicates I needed to do 2 things.
+1) In the pictures controller, I needed to limit the user from creatig duplicate pictures
+```
+def create
+  @picture = current_user.pictures.build(picture_params)
+
+  @existing_pictures = Picture.where(title: @picture.title)
+  if @existing_pictures.length > 0
+    render json: @existing_pictures[0], status: :created
+  elsif @picture.save
+    render json: @picture, status: :created
+  else
+    render json: @picture.errors, status: :unprocessable_entity
+  end
+end
+```
+Then, in the favorites controller, I needed to add
+```
+def create
+  @favorite = current_user.favorites.build(favorite_params)
+
+  if Favorite.exists?(user_id: current_user.id,
+                      picture_id: favorite_params[:picture_id])
+    head :conflict
+  elsif @favorite.save
+    render json: @favorite, status: :created
+  else
+    render json: @favorite.errors, status: :unprocessable_entity
+  end
+end
+```
+
+This limits users fro creating duplicate pictures and from adding duplicate favorites.
 
 ## Adding the Third Party Api
 
