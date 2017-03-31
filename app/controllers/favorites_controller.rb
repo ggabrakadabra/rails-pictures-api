@@ -45,7 +45,7 @@ class FavoritesController < OpenReadController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_favorite
-    @favorite = Favorite.find(params[:id])
+    @favorite = current_user.favorites.find(params[:id])
   end
   private :set_favorite
 

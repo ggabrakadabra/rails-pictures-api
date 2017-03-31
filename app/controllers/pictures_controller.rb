@@ -44,7 +44,7 @@ class PicturesController < OpenReadController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_picture
-    @picture = Picture.find(params[:id])
+    @picture = current_user.pictures.find(params[:id])
   end
   private :set_picture
 

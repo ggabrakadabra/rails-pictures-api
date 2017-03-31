@@ -41,7 +41,7 @@ class CommentsController < OpenReadController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_comment
-    @comment = Comment.find(params[:id])
+    @comment = current_user.favorites.find(params[:id])
   end
   private :set_comment
 
