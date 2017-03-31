@@ -390,38 +390,38 @@ These are all of the routes listed in the back end
 | Verb | URI Pattern | Controller#Action |
 |------|-------------|-------------------|
 | GET  | `/comments`  | `comments#index`      |
-| POST |  | `/comments `  |        `comments#create` |
-| GET |   |`/comments/:id` |      |  `comments#show` |
-| PATCH | | `/comments/:id` |     |   `comments#update` |
-| PUT   | | `/comments/:id` |       | `comments#update` |
-| DELETE |  |`/comments/:id` |      | `comments#destroy` |
-| GET  | |  `/favorites` |          | `favorites#index` |
-|  POST | |  `/favorites` |        |   `favorites#create` |
-| GET  | |  `/favorites/:id` |     |  `favorites#show` |
-|   PATCH | | `/favorites/:id` |    |   `favorites#update` |
-|   PUT  | |  `/favorites/:id` |    |   `favorites#update` |
-|   DELETE | | `/favorites/:id `|   |    `favorites#destroy`|
-| GET  | |  `/pictures` |         |   `pictures#index` |
-|   POST  | `/pictures` |    |        `pictures#create` |
-| GET  | |  `/pictures/:id` |    |    `pictures#show` |
-|   PATCH | | `/pictures/:id` |    |    `pictures#update` |
-|   PUT | |   `/pictures/:id` |   |     `pictures#update` |
-|   DELETE | | `/pictures/:id` |     |   `pictures#destroy` |
-| GET  | |  `/search` |           |   `search#index` |
-|     POST  | | `/search` |          |    `search#create` |
-| GET   | | `/search/:id` |        |  `search#show` |
-|   PATCH | | `/search/:id` |      |    `search#update` |
-|   PUT  | |  `/search/:id` |     |     `search#update` |
-|   DELETE  |  | `/search/:id` |    |      `search#destroy` |
-| POST  |  |   `/sign-up` |       |      `users#signup` |
-| POST |  |  `/sign-in` |         |    `users#signin` |
-|   DELETE   |  |`/sign-out/:id` |     |   `users#signout` |
-|   PATCH   |   | `/change-password/:id` |   | `users#changepw` |
-| GET  |  |  `/users` |          |     `users#index` |
-| GET  |  |  `/users/:id` |        |   `users#show` |
-| POST |  |  `/search/sounds` |    |   `searches#sounds_search` |
-| POST  |  | `/search/patents` |   |   `searches#patents_search` |
-| POST  |  | `/search/mars` |     |    `searches#mars_search` |
-| POST  |  | `/search/apod/today` |    | `searches#apod_today` |
-| POST  |   | `/search/apod` |    |     `searches#apod_search` |
-| POST  |   | `/search/neo/today` |   |  `searches#neo_today` |
+| POST |  `/comments `  |        `comments#create` |
+| GET |   `/comments/:id` |       `comments#show` |
+| PATCH |  `/comments/:id` |       `comments#update` |
+| PUT   |  `/comments/:id` |       `comments#update` |
+| DELETE | `/comments/:id` |      `comments#destroy` |
+| GET  |  `/favorites` |          `favorites#index` |
+|  POST |  `/favorites` |          `favorites#create` |
+| GET  |  `/favorites/:id` |      `favorites#show` |
+|   PATCH | `/favorites/:id` |      `favorites#update` |
+|   PUT  |  `/favorites/:id` |      `favorites#update` |
+|   DELETE | `/favorites/:id `|      `favorites#destroy`|
+| GET  |  `/pictures` |           `pictures#index` |
+|   POST | `/pictures` |           `pictures#create` |
+| GET  |  `/pictures/:id` |       `pictures#show` |
+|   PATCH | `/pictures/:id` |       `pictures#update` |
+|   PUT |   `/pictures/:id` |       `pictures#update` |
+|   DELETE | `/pictures/:id` |       `pictures#destroy` |
+| GET  |  `/search` |             `search#index` |
+|     POST  | `/search` |             `search#create` |
+| GET   | `/search/:id` |         `search#show` |
+|   PATCH | `/search/:id` |         `search#update` |
+|   PUT  |  `/search/:id` |         `search#update` |
+|   DELETE   | `/search/:id` |         `search#destroy` |
+| POST  |    `/sign-up` |            `users#signup` |
+| POST |   `/sign-in` |            `users#signin` |
+|   DELETE    |`/sign-out/:id` |       `users#signout` |
+|   PATCH     | `/change-password/:id` |   `users#changepw` |
+| GET  |   `/users` |              `users#index` |
+| GET  |   `/users/:id` |          `users#show` |
+| POST |   `/search/sounds` |      `searches#sounds_search` |
+| POST  |  `/search/patents` |     `searches#patents_search` |
+| POST  |  `/search/mars` |        `searches#mars_search` |
+| POST  |  `/search/apod/today` |    `searches#apod_today` |
+| POST  |   `/search/apod` |        `searches#apod_search` |
+| POST  |   `/search/neo/today` |    `searches#neo_today` |
