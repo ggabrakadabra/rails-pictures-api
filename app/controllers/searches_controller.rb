@@ -15,9 +15,18 @@ class SearchesController < OpenReadController
 
   # using create route for api w/o generating new resource
   def sounds_search
+    api_key = Rails.application.secrets.nasa_api_key
+    url = "https://api.nasa.gov/planetary/sounds?limit=100&api_key=#{api_key}"
+    response = open(url)
+    data_string = response.read
+    json_string = JSON.parse(data_string)
+    render json: json_string
+  end
+
+  def sounds_query
     query = params[:search][:query]
     api_key = Rails.application.secrets.nasa_api_key
-    url = "https://api.nasa.gov/planetary/sounds?q=#{query}&limit=100&api_key=#{api_key}"
+    url = "https://api.nasa.gov/planetary/sounds?query=#{query}&limit=100&api_key=#{api_key}"
     response = open(url)
     data_string = response.read
     json_string = JSON.parse(data_string)

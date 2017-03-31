@@ -383,3 +383,46 @@ Content-Type: application/json; charset=utf-8
   }
 }
 ```
+
+## All Routes
+These are all of the routes listed in the back end
+```
+Prefix Verb   URI Pattern                    Controller#Action
+comments GET    /comments(.:format)            comments#index
+       POST   /comments(.:format)            comments#create
+comment GET    /comments/:id(.:format)        comments#show
+       PATCH  /comments/:id(.:format)        comments#update
+       PUT    /comments/:id(.:format)        comments#update
+       DELETE /comments/:id(.:format)        comments#destroy
+favorites GET    /favorites(.:format)           favorites#index
+       POST   /favorites(.:format)           favorites#create
+favorite GET    /favorites/:id(.:format)       favorites#show
+       PATCH  /favorites/:id(.:format)       favorites#update
+       PUT    /favorites/:id(.:format)       favorites#update
+       DELETE /favorites/:id(.:format)       favorites#destroy
+pictures GET    /pictures(.:format)            pictures#index
+       POST   /pictures(.:format)            pictures#create
+picture GET    /pictures/:id(.:format)        pictures#show
+       PATCH  /pictures/:id(.:format)        pictures#update
+       PUT    /pictures/:id(.:format)        pictures#update
+       DELETE /pictures/:id(.:format)        pictures#destroy
+search_index GET    /search(.:format)              search#index
+       POST   /search(.:format)              search#create
+search GET    /search/:id(.:format)          search#show
+       PATCH  /search/:id(.:format)          search#update
+       PUT    /search/:id(.:format)          search#update
+       DELETE /search/:id(.:format)          search#destroy
+sign_up POST   /sign-up(.:format)             users#signup
+sign_in POST   /sign-in(.:format)             users#signin
+       DELETE /sign-out/:id(.:format)        users#signout
+       PATCH  /change-password/:id(.:format) users#changepw
+ users GET    /users(.:format)               users#index
+  user GET    /users/:id(.:format)           users#show
+search_sounds POST   /search/sounds(.:format)       searches#sounds_search
+search_patents POST   /search/patents(.:format)      searches#patents_search
+search_mars POST   /search/mars(.:format)         searches#mars_search
+search_apod_today POST   /search/apod/today(.:format)   searches#apod_today
+search_apod POST   /search/apod(.:format)         searches#apod_search
+search_neo_today POST   /search/neo/today(.:format)    searches#neo_today
+search_stats POST   /search/stats(.:format)        searches#neo_stats
+```
