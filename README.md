@@ -386,43 +386,51 @@ Content-Type: application/json; charset=utf-8
 
 ## All Routes
 These are all of the routes listed in the back end
+
+| Verb | URI Pattern | Controller#Action |
+|------|-------------|-------------------|
+| GET  | `/users`    | `users#index`     |
+| GET  | `/users/1`  | `users#show`      |
+
+
 ```
-Prefix Verb   URI Pattern                    Controller#Action
-comments GET    /comments(.:format)            comments#index
-       POST   /comments(.:format)            comments#create
-comment GET    /comments/:id(.:format)        comments#show
-       PATCH  /comments/:id(.:format)        comments#update
-       PUT    /comments/:id(.:format)        comments#update
-       DELETE /comments/:id(.:format)        comments#destroy
-favorites GET    /favorites(.:format)           favorites#index
-       POST   /favorites(.:format)           favorites#create
-favorite GET    /favorites/:id(.:format)       favorites#show
-       PATCH  /favorites/:id(.:format)       favorites#update
-       PUT    /favorites/:id(.:format)       favorites#update
-       DELETE /favorites/:id(.:format)       favorites#destroy
-pictures GET    /pictures(.:format)            pictures#index
-       POST   /pictures(.:format)            pictures#create
-picture GET    /pictures/:id(.:format)        pictures#show
-       PATCH  /pictures/:id(.:format)        pictures#update
-       PUT    /pictures/:id(.:format)        pictures#update
-       DELETE /pictures/:id(.:format)        pictures#destroy
-search_index GET    /search(.:format)              search#index
-       POST   /search(.:format)              search#create
-search GET    /search/:id(.:format)          search#show
-       PATCH  /search/:id(.:format)          search#update
-       PUT    /search/:id(.:format)          search#update
-       DELETE /search/:id(.:format)          search#destroy
-sign_up POST   /sign-up(.:format)             users#signup
-sign_in POST   /sign-in(.:format)             users#signin
-       DELETE /sign-out/:id(.:format)        users#signout
-       PATCH  /change-password/:id(.:format) users#changepw
- users GET    /users(.:format)               users#index
-  user GET    /users/:id(.:format)           users#show
-search_sounds POST   /search/sounds(.:format)       searches#sounds_search
-search_patents POST   /search/patents(.:format)      searches#patents_search
-search_mars POST   /search/mars(.:format)         searches#mars_search
-search_apod_today POST   /search/apod/today(.:format)   searches#apod_today
-search_apod POST   /search/apod(.:format)         searches#apod_search
-search_neo_today POST   /search/neo/today(.:format)    searches#neo_today
-search_stats POST   /search/stats(.:format)        searches#neo_stats
+| Verb | URI Pattern | Controller#Action |
+|------|-------------|-------------------|
+| GET  | `/comments`  | `comments#index`      |
+| POST |  | `/comments `  |        `comments#create` |
+| GET |   |`/comments/:id` |      |  `comments#show` |
+      | PATCH | | `/comments/:id` |     |   `comments#update` |
+      | PUT   | | `/comments/:id` |       | `comments#update` |
+      | DELETE |  |`/comments/:id` |      | `comments#destroy` |
+| GET  | |  `/favorites` |          | `favorites#index` |
+    |  POST | |  `/favorites` |        |   `favorites#create` |
+| GET  | |  `/favorites/:id` |     |  `favorites#show` |
+    |   PATCH | | `/favorites/:id` |    |   `favorites#update` |
+    |   PUT  | |  `/favorites/:id` |    |   `favorites#update` |
+    |   DELETE | | `/favorites/:id `|   |    `favorites#destroy`|
+| GET  | |  `/pictures` |         |   `pictures#index` |
+    |   POST  | `/pictures` |    |        `pictures#create` |
+| GET  | |  `/pictures/:id` |    |    `pictures#show` |
+    |   PATCH | | `/pictures/:id` |    |    `pictures#update` |
+    |   PUT | |   `/pictures/:id` |   |     `pictures#update` |
+    |   DELETE | | `/pictures/:id` |     |   `pictures#destroy` |
+| GET  | |  `/search` |           |   `search#index` |
+  |     POST  | | `/search` |          |    `search#create` |
+| GET   | | `/search/:id` |        |  `search#show` |
+    |   PATCH | | `/search/:id` |      |    `search#update` |
+    |   PUT  | |  `/search/:id` |     |     `search#update` |
+    |   DELETE  |  | `/search/:id` |    |      `search#destroy` |
+| POST  |  |   `/sign-up` |       |      `users#signup` |
+| POST |  |  `/sign-in` |         |    `users#signin` |
+    |   DELETE   |  |`/sign-out/:id` |     |   `users#signout` |
+    |   PATCH   |   | `/change-password/:id` |   | `users#changepw` |
+| GET  |  |  `/users` |          |     `users#index` |
+| GET  |  |  `/users/:id` |        |   `users#show` |
+| POST |  |  `/search/sounds` |    |   `searches#sounds_search` |
+| POST  |  | `/search/patents` |   |   `searches#patents_search` |
+| POST  |  | `/search/mars` |     |    `searches#mars_search` |
+| POST  |  | `/search/apod/today` |    | `searches#apod_today` |
+| POST  |   | `/search/apod` |    |     `searches#apod_search` |
+| POST  |   | `/search/neo/today` |   |  `searches#neo_today` |
+| POST  |   | `/search/stats` |      |  `searches#neo_stats` |
 ```
