@@ -1,6 +1,6 @@
 ## Links
 
-**Live site:** <https://ggabrakadabra.github.io/pictures-app-client/> --no longer available
+**Live site:** <https://ggabrakadabra.github.io/pictures-app-client/>
 
 **Front End Repo:** <https://github.com/ggabrakadabra/pictures-app-client>
 
