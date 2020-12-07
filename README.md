@@ -1,8 +1,8 @@
 ## Links
 
-**Live site:** <https://ggwilliams.github.io/pictures-app-client/>
+**Live site:** <https://ggwilliams.github.io/pictures-app-client/> --no longer available
 
-**Front End Repo:** <https://github.com/ggwilliams/pictures-app-client>
+**Front End Repo:** <https://github.com/ggabrakadabra/pictures-app-client>
 
 **Deployed:** <https://salty-ravine-27099.herokuapp.com/>
 
